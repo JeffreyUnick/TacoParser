@@ -78,16 +78,14 @@ namespace LoggingKata
             
             for (int i = 0; i < locations.Length; i++)
             {
-                var locA = locations[1];
+                var locA = locations[i];
                 var corA = new GeoCoordinate();
                 corA.Latitude = locA.Location.Latitude;
                 corA.Longitude = locA.Location.Longitude;
                 for (int j = 0; j < locations.Length; j++)
                 {
                     var locB = locations[j];
-                    var corB = new GeoCoordinate();
-                    corB.Latitude = locB.Location.Latitude;
-                    corB.Longitude = locB.Location.Longitude;
+                    var corB = new GeoCoordinate(locB.Location.Latitude, locB.Location.Longitude);
                     double currentDistance = corA.GetDistanceTo(corB);
                     if (currentDistance > distance)
                     {
